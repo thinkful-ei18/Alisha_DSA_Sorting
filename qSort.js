@@ -1,6 +1,10 @@
 'use strict';
 /*
 Write a function qSort that sorts a dataset using the quicksort algorithm.
+
+Best: O(n logn)
+Average: O(n logn)
+Worst: O(n^2)
 */
 
 const numbers = [
