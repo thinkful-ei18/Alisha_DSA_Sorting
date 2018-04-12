@@ -8,8 +8,13 @@ const numbers = [
 ]; 
 // 100 numbers
 
+// const numbers = [
+//   89, 30, 25, 32, 72, 70];
+
+let count = 0;
 
 const swap = (array, i, j) => {
+  count ++; // measure the swaps
   const temp = array[i];
   array[i] = array[j];
   array[j] = temp;
@@ -21,6 +26,7 @@ const partition = (array, start, end) => {
   let j = start;
 
   for (let i = start; i < end - 1; i++) {
+    count++; // measure the comparisons, where a swap needs to take place or not
     if (array[i] <= pivot) {
       swap(array, i, j);
       j++;
@@ -38,7 +44,9 @@ const qSort = (array, beginning = 0, end = array.length) => {
     return array;
   }
 
+  count++; // measure the 'divisions'
   const middle = partition(array, beginning, end);
+
   array = qSort(array, beginning, middle);
   array = qSort(array, middle + 1, end);
 
@@ -46,4 +54,4 @@ const qSort = (array, beginning = 0, end = array.length) => {
 };
 
 
-console.log(qSort(numbers));
+console.log(qSort(numbers), 'count:', count);
